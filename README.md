@@ -7,7 +7,7 @@
 
 🔹 Funcionalidades
 
-🔹 Distribuição
+🔹 Distribuiçãoaaaaaaaaaaaaaaaaaaaa
 
 🔹 Pré-requisitos
 
