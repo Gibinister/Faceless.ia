@@ -1,61 +1,74 @@
 import tkinter as tk
+from Integracao import respostaIA
 
 class BubblePopup:
-    def __init__(self, master, text, duration=3000):
-        self.master = master
-        self.text = text
-        self.duration = duration
+    def __init__(self, mestre, texto, duracao=3000):
+        self.mestre = mestre
+        self.texto = texto
+        self.duracao = duracao
 
-        self.popup = tk.Toplevel(master)
-        self.popup.wm_overrideredirect(True)  # Remove window decorations
-        self.popup.wm_geometry("+{}+{}".format(master.winfo_x() + 50, master.winfo_y() + 50))
+        # Ajusta as coordenadas para posicionar o popup acima da sobreposição
+        x = mestre.winfo_x() + 50
+        y = mestre.winfo_y() - 100
 
-        self.text_widget = tk.Text(self.popup, wrap='word', width=30, height=5, font=("Helvetica", 12))
-        self.text_widget.insert('1.0', text)
-        self.text_widget.pack(side='left', fill='both', expand=True)
+        self.popup = tk.Toplevel(mestre)
+        self.popup.wm_overrideredirect(True)  # Remove as decorações da janela
+        self.popup.wm_geometry("+{}+{}".format(x, y))
+        self.popup.attributes('-topmost', True)  # Define o popup como o mais alto
 
-        scrollbar = tk.Scrollbar(self.popup, command=self.text_widget.yview)
+        self.texto_widget = tk.Text(self.popup, wrap='word', width=30, height=5, font=("Helvetica", 12))
+        self.texto_widget.insert('1.0', texto)
+        self.texto_widget.pack(side='left', fill='both', expand=True)
+
+        scrollbar = tk.Scrollbar(self.popup, command=self.texto_widget.yview)
         scrollbar.pack(side='right', fill='y')
 
-        self.text_widget.config(yscrollcommand=scrollbar.set)
-        
-        self.popup.after(duration, self.close_popup)
+        self.texto_widget.config(yscrollcommand=scrollbar.set)
 
-    def close_popup(self):
+        self.popup.after(duracao, self.fechar_popup)
+
+    def fechar_popup(self):
         self.popup.destroy()
 
-class ScreenOverlay:
-    def __init__(self, root):
-        self.root = root
-        self.root.attributes('-alpha', 0.5)  # Set transparency level
-        self.root.attributes('-topmost', True)  # Make the window stay on top
+class SobreposicaoTela:
+    def __init__(self, raiz):
+        self.raiz = raiz
+        self.raiz.attributes('-alpha', 0.95)  # Define o nível de transparência
+        self.raiz.attributes('-topmost', True)  # Mantém a janela no topo
+        self.raiz.overrideredirect(1)  # Remove as decorações da janela
 
-        # Create a label with some text
-        self.label = tk.Label(root, text="This is a screen overlay", font=("Helvetica", 16))
-        self.label.pack(pady=20)
+        # Cria uma caixa de entrada para a entrada do usuário
+        self.entrada_usuario = tk.Entry(raiz, font=("Helvetica", 12), width=39)
+        self.entrada_usuario.pack(side='left', padx=5)
 
-        # Create a button to show the bubble popup
-        self.show_popup_button = tk.Button(root, text="Show Popup", command=self.show_bubble_popup)
-        self.show_popup_button.pack(pady=10)
+        # Vincula o evento <Return> à função upload_and_show_popup
+        self.entrada_usuario.bind('<Return>', lambda evento: self.upload_e_mostrar_popup())
 
-    def show_bubble_popup(self):
-        # Example of a large amount of text
-        long_text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. " * 50
+        # Cria um botão para fechar a janela
+        self.botao_fechar = tk.Button(raiz, text=" X ", command=raiz.destroy)
+        self.botao_fechar.pack(side='left', padx=1)
 
-        duration = 10000  # Duration in milliseconds
+    def upload_e_mostrar_popup(self):
+        entrada_usuario = self.entrada_usuario.get()
+        self.entrada_usuario.delete(0, 'end')
 
-        bubble_popup = BubblePopup(self.root, long_text, duration)
+        # Chama a função Python de outro arquivo (Integracao.py), READICIONAR COM INTEGRAÇÃO FEIA
+        # resultado = respostaIA(entrada_usuario)
+        # duracao = (len(resultado.split())) * 256
+
+        # Mostra o resultado no popup de balão
+        instancia_balao_popup = BubblePopup(self.raiz, "resultado", duracao=10000)
 
 if __name__ == "__main__":
-    root = tk.Tk()
+    raiz = tk.Tk()
 
-    # Set window size and position
-    width = 400
-    height = 200
-    x = (root.winfo_screenwidth() - width) // 2
-    y = (root.winfo_screenheight() - height) // 2
+    # Define o tamanho e a posição da janela
+    largura = 400
+    altura = 50
+    x = (raiz.winfo_screenwidth() - largura)
+    y = (raiz.winfo_screenheight() - altura) - 50
 
-    root.geometry(f'{width}x{height}+{x}+{y}')
+    raiz.geometry(f'{largura}x{altura}+{x}+{y}')
 
-    overlay = ScreenOverlay(root)
-    root.mainloop()
+    sobreposicao = SobreposicaoTela(raiz)
+    raiz.mainloop()
