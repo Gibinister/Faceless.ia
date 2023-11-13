@@ -8,7 +8,7 @@ class BubblePopup:
         self.duracao = duracao
 
         # Ajusta as coordenadas para posicionar o popup acima da sobreposição
-        x = mestre.winfo_x() + 50
+        x = mestre.winfo_x()
         y = mestre.winfo_y() - 100
 
         self.popup = tk.Toplevel(mestre)
@@ -16,7 +16,7 @@ class BubblePopup:
         self.popup.wm_geometry("+{}+{}".format(x, y))
         self.popup.attributes('-topmost', True)  # Define o popup como o mais alto
 
-        self.texto_widget = tk.Text(self.popup, wrap='word', width=30, height=5, font=("Helvetica", 12))
+        self.texto_widget = tk.Text(self.popup, wrap='word', width=42, height=5, font=("Helvetica", 12))
         self.texto_widget.insert('1.0', texto)
         self.texto_widget.pack(side='left', fill='both', expand=True)
 
@@ -25,7 +25,30 @@ class BubblePopup:
 
         self.texto_widget.config(yscrollcommand=scrollbar.set)
 
-        self.popup.after(duracao, self.fechar_popup)
+        # Define a transparência inicial como 0 (totalmente transparente)
+        self.popup.attributes("-alpha", 0.0)
+
+        # Agenda a animação de fade-in
+        self.fade_in()
+
+        # Agenda a animação de fade-out após 'duracao' milissegundos
+        self.popup.after(duracao, self.fade_out)
+
+    def fade_in(self):
+        alpha = self.popup.attributes("-alpha")
+        if alpha < 1.0:
+            alpha += 0.1  # Ajusta o tamanho do passo para o efeito de fade-in
+            self.popup.attributes("-alpha", alpha)
+            self.popup.after(50, self.fade_in)  # Chama a função novamente após 50 milissegundos
+
+    def fade_out(self):
+        alpha = self.popup.attributes("-alpha")
+        if alpha > 0.0:
+            alpha -= 0.1  # Ajusta o tamanho do passo para o efeito de fade-out
+            self.popup.attributes("-alpha", alpha)
+            self.popup.after(50, self.fade_out)  # Chama a função novamente após 50 milissegundos
+        else:
+            self.fechar_popup()  # Fecha o popup uma vez que ele está completamente desaparecido
 
     def fechar_popup(self):
         self.popup.destroy()
