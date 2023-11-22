@@ -23,7 +23,7 @@ Clone o repositório para o seu ambiente local.
 git clone https://github.com/Gibinister/FacelessIA.git
 
 Instale as dependências necessárias.
-pip install -r requirements.txt
+pip install --user openai
 
 Obtenha sua chave de API OpenAI GPT-3.5 (Davinci) em OpenAI Platform.
 Substitua a chave de API no arquivo config.py com a sua chave.
