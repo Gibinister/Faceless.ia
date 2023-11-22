@@ -26,7 +26,7 @@ Instale as dependências necessárias.
 pip install --user openai
 
 Obtenha sua chave de API OpenAI GPT-3.5 (Davinci) em OpenAI Platform.
-Substitua a chave de API no arquivo config.py com a sua chave.
+Substitua a chave de API no arquivo Integracao.py com a sua chave.
 OPENAI_API_KEY = 'sua-chave-de-api-aqui'
 Execute o aplicativo.
 
