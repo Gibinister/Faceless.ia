@@ -1,1 +1,1 @@
-pip install --user openai
+pip install --user openai==0.28
