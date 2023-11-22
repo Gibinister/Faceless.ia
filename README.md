@@ -1,87 +1,46 @@
-# Faceless.ia
-## Versão: 0.1 
-## Status do Projeto: ✔️ Concluído ⚠️ Espera ❌ Cancelado
 
-## Tópicos
-🔹 Descrição do projeto 
+Faceless.IA - Assistente Virtual Impulsionado pela IA OpenAI GPT-3.5 (Davinci)
+Bem-vindo ao Faceless.IA, um projeto de assistente virtual desenvolvido em Python e potencializado pela poderosa IA da OpenAI, Davinci.
 
-🔹 Funcionalidades
+Descrição do Projeto
+O Faceless.IA é um assistente virtual inteligente que utiliza a avançada tecnologia de processamento de linguagem natural proporcionada pelo modelo GPT-3.5 (Davinci) da OpenAI. Este projeto foi criado para oferecer uma experiência de assistência virtual mais avançada e personalizada, com a capacidade de compreender e gerar respostas contextuais de maneira impressionante.
 
-🔹 Distribuiçãoaaaaaaaaaaaaaaaaaaaa
+Características Principais
+IA Avançada: Alimentado pelo modelo GPT-3.5 (Davinci) da OpenAI, o Faceless.IA oferece respostas mais inteligentes e contextuais.
 
-🔹 Pré-requisitos
+Integração Simples: Desenvolvido em Python para facilitar a integração em diversos ambientes e projetos.
 
-🔹 Como rodar a aplicação
+Personalização: Possibilidade de personalizar e estender as funcionalidades de acordo com as necessidades específicas do usuário.
 
-🔹 Testes realizados
+Amigável e Intuitivo: Interface amigável para facilitar a interação com o assistente virtual.
 
-🔹 Banco de Dados
+Requisitos do Sistema
+Python 3.7 ou superior
+Chave de API OpenAI GPT-3.5 (Davinci)
+Configuração
 
-🔹 Linguagens, dependências e libs utilizadas
+Clone o repositório para o seu ambiente local.
+git clone https://github.com/seu-usuario/FacelessIA.git
 
-🔹 Novas Recursos
+Instale as dependências necessárias.
+pip install -r requirements.txt
 
-🔹 Resolvendo problemas
+Obtenha sua chave de API OpenAI GPT-3.5 (Davinci) em OpenAI Platform.
+Substitua a chave de API no arquivo config.py com a sua chave.
+OPENAI_API_KEY = 'sua-chave-de-api-aqui'
+Execute o aplicativo.
 
-🔹 Recursos inseridos 
+O Faceless.IA oferece uma interface interativa para interação. Basta iniciar o aplicativo e seguir as instruções na tela para experimentar as capacidades do assistente virtual.
 
-🔹 Desenvolvedores/Contribuintes
+Contribuições
+Contribuições são bem-vindas! Se você deseja melhorar o Faceless.IA, sinta-se à vontade para abrir problemas (issues) ou enviar solicitações de pull (pull requests).
 
-🔹 Informações Extras
+Licença
+Este projeto é distribuído sob a licença MIT. Sinta-se à vontade para usar, modificar e distribuir conforme necessário.
 
+Esperamos que o Faceless.IA seja útil e contribua para suas experiências de assistência virtual avançada!
 
-...
-
-Insira os tópicos do README em links para facilitar a navegação do leitor
-
-## Descrição do projeto
-Faceless.ia é um overlay de computador, que disponibiliza um assistente virtual ao usuario. Este
-
-## Funcionalidades ⚙️
-⚠️ Funcionalidade 1
-
-✔️ Funcionalidade 2
-
-✔️ Funcionalidade 3
-
-✔️ Funcionalidade 4
-
-## Distribuição
-Link para teste da versão disponibilizada.
-
-## Pré-requisitos ⚠️    
-Versão do Android; 
-SDK; 
-Aparelho utilizado para testes.
-- Liste todas as dependencias e libs que o usuário deve ter instalado na máquina antes de rodar a aplicação, para rodar o projeto.
-
-## Como rodar a aplicação 
-Explicação de como se deve utilizar o projeto.
-
-## Testes realizados
-Utilização de imagens e descrição do qeu foi testado.
-
-## Banco de Dados 🗂️
-Caso tenha acesso a uma base de dados, deixe a descrição do arquivo (json, csv, xml e etc).
-
-## Linguagens, dependencias e libs utilizadas 📚
-![Android Studio](https://img.shields.io/badge/Android-3DDC84?style=for-the-badge&logo=android&logoColor=white)
-
-XML
-...
-Liste as tecnologias utilizadas no projeto que não forem reconhecidas pelo Github
-
-## Resolvendo Problemas 
-Em issues foram abertos alguns problemas gerados durante o desenvolvimento desse projeto e como foram resolvidos.
-
-## Recursos de inseridos 🧰
-Se for o caso, liste tarefas/funcionalidades que ainda precisam ser implementadas na sua aplicação, insira fotos da tela do app.
-
-📝 Tarefa 1
-
-📝 Tarefa 2
-
-📝 Tarefa 3
+Este projeto é mantido por Seu Nome.
 
 ## Desenvolvedores/Contribuintes:
 Gabriel Verlangieri de Souza
@@ -91,4 +50,4 @@ Davi Cândido de Oliveira
 ## Licença
 The MIT License (MIT)
 
-## Copyright ©️ Ano - Titulo do Projeto
+## Copyright ©️ 2023 - Faceless.IA
