@@ -2,19 +2,19 @@ import tkinter as tk
 from Integracao import respostaIA
 
 class BubblePopup:
-    def __init__(self, mestre, texto, duracao=3000):
+    def __init__(self, mestre, texto, duracao):
         self.mestre = mestre
         self.texto = texto
         self.duracao = duracao
 
-        # Ajusta as coordenadas para posicionar o popup acima da sobreposição
+        
         x = mestre.winfo_x()
         y = mestre.winfo_y() - 100
 
         self.popup = tk.Toplevel(mestre)
-        self.popup.wm_overrideredirect(True)  # Remove as decorações da janela
+        self.popup.wm_overrideredirect(True)  
         self.popup.wm_geometry("+{}+{}".format(x, y))
-        self.popup.attributes('-topmost', True)  # Define o popup como o mais alto
+        self.popup.attributes('-topmost', True)  
 
         self.texto_widget = tk.Text(self.popup, wrap='word', width=42, height=5, font=("Helvetica", 12))
         self.texto_widget.insert('1.0', texto)
@@ -25,30 +25,27 @@ class BubblePopup:
 
         self.texto_widget.config(yscrollcommand=scrollbar.set)
 
-        # Define a transparência inicial como 0 (totalmente transparente)
         self.popup.attributes("-alpha", 0.0)
 
-        # Agenda a animação de fade-in
         self.fade_in()
 
-        # Agenda a animação de fade-out após 'duracao' milissegundos
         self.popup.after(duracao, self.fade_out)
 
     def fade_in(self):
         alpha = self.popup.attributes("-alpha")
         if alpha < 1.0:
-            alpha += 0.1  # Ajusta o tamanho do passo para o efeito de fade-in
+            alpha += 0.1  
             self.popup.attributes("-alpha", alpha)
-            self.popup.after(50, self.fade_in)  # Chama a função novamente após 50 milissegundos
+            self.popup.after(50, self.fade_in)  
 
     def fade_out(self):
         alpha = self.popup.attributes("-alpha")
         if alpha > 0.0:
-            alpha -= 0.1  # Ajusta o tamanho do passo para o efeito de fade-out
+            alpha -= 0.1  
             self.popup.attributes("-alpha", alpha)
-            self.popup.after(50, self.fade_out)  # Chama a função novamente após 50 milissegundos
+            self.popup.after(50, self.fade_out)  
         else:
-            self.fechar_popup()  # Fecha o popup uma vez que ele está completamente desaparecido
+            self.fechar_popup() 
 
     def fechar_popup(self):
         self.popup.destroy()
@@ -56,18 +53,15 @@ class BubblePopup:
 class SobreposicaoTela:
     def __init__(self, raiz):
         self.raiz = raiz
-        self.raiz.attributes('-alpha', 0.95)  # Define o nível de transparência
-        self.raiz.attributes('-topmost', True)  # Mantém a janela no topo
-        self.raiz.overrideredirect(1)  # Remove as decorações da janela
+        self.raiz.attributes('-alpha', 0.95)  
+        self.raiz.attributes('-topmost', True)  
+        self.raiz.overrideredirect(1)  
 
-        # Cria uma caixa de entrada para a entrada do usuário
         self.entrada_usuario = tk.Entry(raiz, font=("Helvetica", 12), width=39)
         self.entrada_usuario.pack(side='left', padx=5)
 
-        # Vincula o evento <Return> à função upload_and_show_popup
         self.entrada_usuario.bind('<Return>', lambda evento: self.upload_e_mostrar_popup())
 
-        # Cria um botão para fechar a janela
         self.botao_fechar = tk.Button(raiz, text=" X ", command=raiz.destroy)
         self.botao_fechar.pack(side='left', padx=1)
 
@@ -75,17 +69,14 @@ class SobreposicaoTela:
         entrada_usuario = self.entrada_usuario.get()
         self.entrada_usuario.delete(0, 'end')
 
-        # Chama a função Python de outro arquivo (Integracao.py), READICIONAR COM INTEGRAÇÃO FEIA
-        # resultado = respostaIA(entrada_usuario)
-        # duracao = (len(resultado.split())) * 256
+        resultado = respostaIA(entrada_usuario)
+        duracao = (len(resultado.split())) * 256
 
-        # Mostra o resultado no popup de balão
-        instancia_balao_popup = BubblePopup(self.raiz, "resultado", duracao=10000)
+        instancia_balao_popup = BubblePopup(self.raiz, resultado, duracao)
 
 if __name__ == "__main__":
     raiz = tk.Tk()
 
-    # Define o tamanho e a posição da janela
     largura = 400
     altura = 50
     x = (raiz.winfo_screenwidth() - largura)
