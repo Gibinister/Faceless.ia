@@ -1,7 +1,7 @@
 import openai
 
 def respostaIA(prompt):
-    openai.api_key = 'Chave api'
+    openai.api_key = 'sua-chave-de-api-aqui'
 
     textoResposta = openai.Completion.create(
         engine="text-davinci-003",
