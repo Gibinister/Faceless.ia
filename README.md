@@ -3,10 +3,10 @@ Faceless.IA - Assistente Virtual Impulsionado pela IA OpenAI GPT-3.5 (Davinci)
 Bem-vindo ao Faceless.IA, um projeto de assistente virtual desenvolvido em Python e potencializado pela poderosa IA da OpenAI, Davinci.
 
 Descrição do Projeto
-O Faceless.IA é um assistente virtual inteligente que utiliza a avançada tecnologia de processamento de linguagem natural proporcionada pelo modelo GPT-3.5 (Davinci) da OpenAI. Este projeto foi criado para oferecer uma experiência de assistência virtual mais avançada e personalizada, com a capacidade de compreender e gerar respostas contextuais de maneira impressionante.
+O Faceless.IA é um assistente virtual inteligente que utiliza a avançada tecnologia de processamento de linguagem natural proporcionada pelo modelo GPT-3.5 (Davinci) da OpenAI. Este projeto foi criado para oferecer uma experiência de assistência virtual mais avançada e personalizada, com a capacidade de compreender e gerar respostas contextuais.
 
 Características Principais
-IA Avançada: Alimentado pelo modelo GPT-3.5 (Davinci) da OpenAI, o Faceless.IA oferece respostas mais inteligentes e contextuais.
+IA Avançada: Alimentado pelo modelo GPT-3.5 (Davinci) da OpenAI, o Faceless.IA oferece respostas mais praticas e contextuais.
 
 Integração Simples: Desenvolvido em Python para facilitar a integração em diversos ambientes e projetos.
 
